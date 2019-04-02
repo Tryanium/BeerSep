@@ -21,11 +21,11 @@ router.post('/addBeer', function(req, res, next) {
 res.send('YOUPI');
 });
 
-router.post('/deleteBeer', function (req,res, next) {
+router.delete('/deleteBeer', function (req,res, next) {
 // TODO: Écrire la route
 });
 
-router.post('/updateBeer', function (req,res, next) {
+router.put('/updateBeer', function (req,res, next) {
 // TODO: Écrire la route
 });
 

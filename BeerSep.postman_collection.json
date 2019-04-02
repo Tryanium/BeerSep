@@ -1,0 +1,78 @@
+{
+	"info": {
+		"_postman_id": "10de366c-1490-4be7-8181-5b01b6013e66",
+		"name": "BeerSep",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AddBeer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:5000/firestore/addBeer",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"firestore",
+						"addBeer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteBeer",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:5000/firestore/deleteBeer",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"firestore",
+						"deleteBeer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": " updateBeer",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:5000/firestore/updateBeer",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"firestore",
+						"updateBeer"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
