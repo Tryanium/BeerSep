@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-var firestore = require('./routes/firestore');
+var beers = require('./routes/beers');
 
 var app = express();
 
@@ -27,9 +27,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
-app.use('/firestore', firestore);
+app.use('/beers', beers);
 
-// TODO: Faire la connexion Cloud firestore ou autre
+// TODO: Faire la connexion Cloud Firestore ou autre
 
 // TODO: Route à créer
 /**

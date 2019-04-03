@@ -15,13 +15,13 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost:5000/firestore/addBeer",
+					"raw": "localhost:5000/beers/addBeer",
 					"host": [
 						"localhost"
 					],
 					"port": "5000",
 					"path": [
-						"firestore",
+						"beers",
 						"addBeer"
 					]
 				}
@@ -38,13 +38,13 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost:5000/firestore/deleteBeer",
+					"raw": "localhost:5000/beers/deleteBeer",
 					"host": [
 						"localhost"
 					],
 					"port": "5000",
 					"path": [
-						"firestore",
+						"beers",
 						"deleteBeer"
 					]
 				}
@@ -61,14 +61,106 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost:5000/firestore/updateBeer",
+					"raw": "localhost:5000/beers/updateBeer",
 					"host": [
 						"localhost"
 					],
 					"port": "5000",
 					"path": [
-						"firestore",
+						"beers",
 						"updateBeer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUser",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:5000/users/getUser",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"users",
+						"getUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:5000/users/addUser",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"users",
+						"addUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteUser",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:5000/users/deleteUser",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"users",
+						"deleteUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateUser",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:5000/users/updateUser",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"users",
+						"updateUser"
 					]
 				}
 			},
