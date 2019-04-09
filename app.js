@@ -8,8 +8,9 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var beers = require('./routes/beers');
+var twitter = require('./routes/twitter');
 
-var serviceAccount = require("../firebase-adminsdk.json");
+var serviceAccount = require("./firebase-adminsdk.json");
 
 var admin = require("firebase-admin");
 
@@ -39,6 +40,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 app.use('/beers', beers);
+app.use('/twitter', twitter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

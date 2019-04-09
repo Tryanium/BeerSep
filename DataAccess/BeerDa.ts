@@ -1,7 +1,8 @@
-class BeerDA {
-  const db = admin.firestore();
+//var db = admin.firestore();
 
-  function addBeer() {
+class BeerDA {
+
+  addBeer() {
   var docRef = db.collection('beer').doc('HK');
   var setAda = docRef.set({
     name: 'Heineken',
@@ -9,7 +10,7 @@ class BeerDA {
   });
   }
 
-  funciton deleteBeer() {
+  deleteBeer() {
 
   }
 }

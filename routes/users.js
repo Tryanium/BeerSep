@@ -1,24 +1,12 @@
-var admin = require("firebase-admin");
+var express = require('express');
+var router = express.Router();
 
-var serviceAccount = require("../firebase-adminsdk.json");
-
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://beersep-cf1ad.firebaseio.com"
-});
-
-const db = admin.firestore();
 
 router.get('/getUser', function (req, res, next) {
 
 });
 
 router.post('/addUser', function(req, res, next) {
-  var docRef = db.collection('beer').doc('HK');
-  var setAda = docRef.set({
-    name: 'Heineken',
-    pourcentage: "5"
-  });
 res.send('YOUPI');
 });
 
