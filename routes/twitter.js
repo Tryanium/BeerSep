@@ -10,8 +10,6 @@ router.use(require('express-session')({ secret: 'keyboard cat', resave: true, sa
 router.use(passport.initialize());
 router.use(passport.session());
 
-var env = require('../twitter-admin.json');
-console.log(process.env.TwitterConsumerKey);
 
 passport.use(new TwitterStrategy({
     consumerKey: process.env.TwitterConsumerKey,

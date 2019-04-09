@@ -10,15 +10,16 @@ var users = require('./routes/users');
 var beers = require('./routes/beers');
 var twitter = require('./routes/twitter');
 
-var serviceAccount = require("./firebase-adminsdk.json");
+//var serviceAccount = require("./firebase-adminsdk.json");
 
 var admin = require("firebase-admin");
 
+/*
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: "https://beersep-cf1ad.firebaseio.com"
 });
-
+*/
 
 
 var app = express();
