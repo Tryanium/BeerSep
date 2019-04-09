@@ -7,27 +7,8 @@
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
-    <div class="">
-      <input type="text" name="" value="" id="beername">
-    </div>
-    <div class="answer">
-
-    </div>
+    <a href="twitter/auth/twitter">Sign in with Twitter</a>
   </body>
 </html>
 
 <script src="/javascripts/jquery-3.2.1.min.js"></script>
-<script>
-  $('#beername').bind('input', function(){
-    $.ajax({
-      type: "POST",
-      url: "/BeerAPI",
-      data: {
-        input: $('#beername').val()
-      },
-      success: function (res) {
-        $('.answer').html(res);
-      }
-    });
-  });
-</script>
