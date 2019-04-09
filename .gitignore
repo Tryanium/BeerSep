@@ -793,6 +793,6 @@ MigrationBackup/
 firebase-adminsdk.json
 
 # Json Twitter token
-# twitter-admin.json
+twitter-admin.json
 
 # End of https://www.gitignore.io/api/node,macos,linux,windows,eclipse,webstorm,phpstorm,intellij,sublimetext,visualstudio,visualstudiocode
