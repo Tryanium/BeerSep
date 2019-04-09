@@ -789,12 +789,6 @@ healthchecksdb
 MigrationBackup/
 
 
-# Json Firestore token
-firebase-adminsdk.json
-
-# Json Twitter token
-twitter-admin.json
-
 # Env
 .env
 

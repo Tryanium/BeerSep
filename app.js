@@ -10,17 +10,17 @@ var users = require('./routes/users');
 var beers = require('./routes/beers');
 var twitter = require('./routes/twitter');
 
-//var serviceAccount = require("./firebase-adminsdk.json");
-
 var admin = require("firebase-admin");
 
-/*
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://beersep-cf1ad.firebaseio.com"
+  credential: admin.credential.cert({
+    "private_key": process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+    "client_email": process.env.FIREBASE_CLIENT_EMAIL,
+    "project_id": process.env.FIREBASE_PROJECT_ID,
+    "private_key_id": process.env.FIREBASE_PRIVATE_KEY_ID
+  }),
+  databaseURL: "https://MY_APP.firebaseio.com"
 });
-*/
-
 
 var app = express();
 
