@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var admin = require("firebase-admin");
-var BeerDA = require('../DataAccess/BeerDA.ts');
+var BeerDA = require('../DataAccess/BeerDa.ts');
 
 /* GET home page. */
 router.post('/addBeer', function(req, res, next) {
