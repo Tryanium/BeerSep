@@ -9,6 +9,17 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var beers = require('./routes/beers');
 
+var serviceAccount = require("../firebase-adminsdk.json");
+
+var admin = require("firebase-admin");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://beersep-cf1ad.firebaseio.com"
+});
+
+
+
 var app = express();
 
 const PORT = process.env.PORT || 5000
@@ -28,17 +39,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 app.use('/beers', beers);
-
-// TODO: Faire la connexion Cloud Firestore ou autre
-
-// TODO: Route à créer
-/**
-AddBeer
-IveDrankIt
-IDontDrankIt
-CreateUser
-DeleteUser
-**/
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
