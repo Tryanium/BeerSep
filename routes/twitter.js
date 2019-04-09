@@ -12,9 +12,9 @@ router.use(passport.session());
 var env = require('../twitter-admin.json');
 
 passport.use(new TwitterStrategy({
-    consumerKey: env.consumerKey,
-    consumerSecret: env.consumerSecret,
-    callbackURL: env.callbackURL
+    consumerKey: process.env.TwitterConsumerKey || env.consumerKey,
+    consumerSecret: process.env.TwitterConsumerSecret || env.consumerSecret,
+    callbackURL: process.env.TwitterCallbackURL || env.callbackURL
   },
 
   function(token, tokenSecret, profile, cb) {
