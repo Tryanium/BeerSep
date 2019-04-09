@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 
+require('dotenv').config();
 var TwitterStrategy = require('passport-twitter').Strategy;
 
 router.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
@@ -10,11 +11,12 @@ router.use(passport.initialize());
 router.use(passport.session());
 
 var env = require('../twitter-admin.json');
+console.log(process.env.TwitterConsumerKey);
 
 passport.use(new TwitterStrategy({
-    consumerKey: process.env.TwitterConsumerKey || env.consumerKey,
-    consumerSecret: process.env.TwitterConsumerSecret || env.consumerSecret,
-    callbackURL: process.env.TwitterCallbackURL || env.callbackURL
+    consumerKey: process.env.TwitterConsumerKey,
+    consumerSecret: process.env.TwitterConsumerSecret,
+    callbackURL: process.env.TwitterCallbackURL
   },
 
   function(token, tokenSecret, profile, cb) {
