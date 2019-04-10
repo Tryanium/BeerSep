@@ -5,7 +5,7 @@ var passport = require('passport');
 require('dotenv').config();
 var TwitterStrategy = require('passport-twitter').Strategy;
 
-router.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
+router.use(require('express-session')({ secret: 'keyboard cat',resave: false, saveUninitialized: true}));
 
 router.use(passport.initialize());
 router.use(passport.session());
@@ -18,7 +18,6 @@ passport.use(new TwitterStrategy({
   },
 
   function(token, tokenSecret, profile, cb) {
-    console.log(profile);
       // In this example, the user's Twitter profile is supplied as the user
       // record.  In a production-quality application, the Twitter profile should
       // be associated with a user record in the application's database, which
@@ -41,12 +40,19 @@ router.get('/auth/twitter', function(req, res) {
   passport.authenticate('twitter');
 });
 
-router.get('/oauth/callback',
+router.get('/oauth/callback', function (req, res) {
   passport.authenticate('twitter', { successRedirect: '/twitter/connecte',
-                                     failureRedirect: '/login' }));
+                                     failureRedirect: '/'
+                                   }) (req,res);
+});
+
 
 router.get('/connecte', function (req,res) {
-  res.send("I'm CONNECTED");
+  if(req.user) {
+    res.send("Hello " + req.user.displayName);
+  } else {
+    res.redirect('/');
+  }
 });
 
 module.exports = router;
