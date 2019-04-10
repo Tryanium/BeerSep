@@ -35,11 +35,6 @@ passport.deserializeUser(function(obj, cb) {
   cb(null, obj);
 });
 
-
-router.get('/auth/twitter', function(req, res) {
-  passport.authenticate('twitter');
-});
-
 router.get('/oauth/callback', function (req, res) {
   passport.authenticate('twitter', { successRedirect: '/twitter/connecte',
                                      failureRedirect: '/'
