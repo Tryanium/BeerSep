@@ -1,16 +1,16 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+const express = require('express');
+const path = require('path');
+const favicon = require('serve-favicon');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 
-var index = require('./routes/index');
-var users = require('./routes/users');
-var beers = require('./routes/beers');
-var twitter = require('./routes/twitter');
+const index = require('./routes/index');
+const users = require('./routes/users');
+const beers = require('./routes/beers');
+const twitter = require('./routes/twitter');
 
-var admin = require("firebase-admin");
+const admin = require("firebase-admin");
 
 admin.initializeApp({
   credential: admin.credential.cert({
@@ -22,9 +22,9 @@ admin.initializeApp({
   databaseURL: "https://MY_APP.firebaseio.com"
 });
 
-var app = express();
+const app = express();
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 5000;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -45,13 +45,13 @@ app.use('/twitter', twitter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+  const err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function(err, req, res) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
