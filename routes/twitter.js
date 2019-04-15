@@ -44,7 +44,8 @@ router.get('/oauth/callback', function (req, res) {
 
 router.get('/connecte', function (req,res) {
   if(req.user) {
-    res.send("Hello " + req.user.displayName);
+    let img = req.user.photos[0].value;
+    res.send("Hello " + req.user.displayName + "<img src='" + img + "' >");
   } else {
     res.redirect('/');
   }
