@@ -15,9 +15,9 @@ class UserDA {
       });
     }
 
-    getUser(id, callback) {
+    getUser(TwitterProfil, callback) {
         const database = admin.firestore();
-        database.collection("users").doc(id).get()
+        database.collection("users").doc(TwitterProfil.id).get()
           .then(function(doc) {
             if (doc.exists) {
               callback(doc.data());
@@ -38,13 +38,15 @@ class UserDA {
      * @returns {any}
      */
     // TODO type le user
-    addUser(id, user){
+    addUser(TwitterProfil){
         const database = admin.firestore();
         let data = {
-          ID: id,
-          "Display Name": user
-        }
-        database.collection("users").doc(id).set(data);
+          ID: TwitterProfil.id,
+          "Display Name": TwitterProfil.displayName,
+          picture: TwitterProfil.photos[0].value,
+          beers: []
+        };
+        database.collection("users").doc(TwitterProfil.id).set(data);
         return true;
     }
 }

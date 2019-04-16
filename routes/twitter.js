@@ -52,11 +52,11 @@ router.get('/oauth/callback', function(req, res, next) {
 
 
 router.get('/connecte', function(req, res) {
-  //console.log(req.user);
+  console.log(req.user);
   if (req.user) {
     let id = req.user.id;
     let img = req.user.photos[0].value;
-    checkIfIndB(id, req.user.displayName);
+    checkIfIndB(req.user);
     res.send("Hello " + req.user.displayName + "<img src='" + img + "' >");
   } else {
     res.redirect('/');
@@ -64,11 +64,10 @@ router.get('/connecte', function(req, res) {
 });
 
 
-function checkIfIndB(UsrId, DisplayName) {
-   var usr = db.getUser(UsrId, function (data) {
+function checkIfIndB(TwitterProfil) {
+   var usr = db.getUser(TwitterProfil, function (data) {
      if(data === null) {
-       console.log("COUCOU");
-       db.addUser(UsrId, DisplayName);
+       db.addUser(TwitterProfil);
      }
      else {
        console.log(data);
