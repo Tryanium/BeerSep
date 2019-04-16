@@ -56,15 +56,21 @@ router.get('/connecte', function(req, res) {
   if (req.user) {
     let id = req.user.id;
     let img = req.user.photos[0].value;
-    checkIfIndB(id);
+    checkIfIndB(id, req.user.displayName);
     res.send("Hello " + req.user.displayName + "<img src='" + img + "' >");
   } else {
     res.redirect('/');
   }
 });
 
-function checkIfIndB(UsrId) {
-  console.log(db.getUser(UsrId));
+function checkIfIndB(UsrId, DisplayName) {
+  let usr = db.getUser(UsrId);
+  if(usr === null) {
+    db.addUser(UsrId, DisplayName);
+  }
+  else {
+    console.log(usr);
+  }
 }
 
 module.exports = router;

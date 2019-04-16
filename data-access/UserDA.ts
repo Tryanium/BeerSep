@@ -4,9 +4,6 @@ class UserDA {
 
     constructor() {
       require('dotenv').config();
-
-
-
       admin.initializeApp({
         credential: admin.credential.cert({
           "private_key": process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n'),
@@ -20,7 +17,17 @@ class UserDA {
 
     getUser(id) {
         const database = admin.firestore();
-        return database.collection("users").doc(id).get();
+        database.collection("users").doc(id).get()
+          .then(function(doc) {
+            if (doc.exists) {
+              return doc;
+            } else {
+              console.log("No such document!");
+              return null;
+            }
+          }).catch(function(error) {
+            console.log("Error getting document:", error);
+          });
     }
 
 
@@ -32,7 +39,13 @@ class UserDA {
      */
     // TODO type le user
     addUser(id, user){
-        return database.collection("users").doc(id).set(user);
+        const database = admin.firestore();
+        let data = {
+          ID: id,
+          "Display Name": user
+        }
+        database.collection("users").doc(id).set(data);
+        return true;
     }
 }
 
