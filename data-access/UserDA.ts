@@ -17,7 +17,6 @@ class UserDA {
 
     getUser(id) {
         const database = admin.firestore();
-        console.log(database);
         database.collection("users").doc(id).get()
           .then(function(doc) {
             if (doc.exists) {

@@ -1,17 +1,19 @@
 class BeerDA extends DataAccess {
+    private _collection;
+
+    constructor() {
+        super();
+        this.collection = this.database.collection("beers");
+    }
 
 
-    /*
-      addBeer() {
-      var docRef = env.collection('beer').doc('HK');
-      var setAda = docRef.set({
-        name: 'Heineken',
-        pourcentage: "5"
-      });
-      }
 
-      deleteBeer() {
 
-      }
-    }*/
+    get collection() {
+        return this._collection;
+    }
+
+    set collection(value) {
+        this._collection = value;
+    }
 }

@@ -14,7 +14,6 @@ var UserDA = /** @class */ (function () {
     }
     UserDA.prototype.getUser = function (id) {
         var database = admin.firestore();
-        console.log(database);
         database.collection("users").doc(id).get()
             .then(function (doc) {
             if (doc.exists) {

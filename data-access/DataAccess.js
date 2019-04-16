@@ -13,6 +13,16 @@ var DataAccess = /** @class */ (function () {
         });
         this.database = admin.firestore();
     }
+    Object.defineProperty(DataAccess.prototype, "database", {
+        get: function () {
+            return this._database;
+        },
+        set: function (value) {
+            this._database = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
     return DataAccess;
 }());
 module.exports = DataAccess;

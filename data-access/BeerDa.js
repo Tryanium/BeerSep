@@ -11,7 +11,19 @@ var __extends = (this && this.__extends) || (function () {
 var BeerDA = /** @class */ (function (_super) {
     __extends(BeerDA, _super);
     function BeerDA() {
-        return _super !== null && _super.apply(this, arguments) || this;
+        var _this = _super.call(this) || this;
+        _this.collection = _this.database.collection("beers");
+        return _this;
     }
+    Object.defineProperty(BeerDA.prototype, "collection", {
+        get: function () {
+            return this._collection;
+        },
+        set: function (value) {
+            this._collection = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
     return BeerDA;
 }(DataAccess));

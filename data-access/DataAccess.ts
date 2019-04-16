@@ -1,5 +1,5 @@
 abstract class DataAccess {
-    protected database;
+    private _database;
 
     protected constructor () {
         const admin = require("firebase-admin");
@@ -14,6 +14,15 @@ abstract class DataAccess {
             databaseURL: "https://beersep-cf1ad.firebaseio.com"
         });
         this.database = admin.firestore();
+    }
+
+
+    get database() {
+        return this._database;
+    }
+
+    set database(value) {
+        this._database = value;
     }
 }
 
