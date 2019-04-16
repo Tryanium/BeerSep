@@ -15,16 +15,15 @@ class UserDA {
       });
     }
 
-    getUser(id) {
+    getUser(id, callback) {
         const database = admin.firestore();
         database.collection("users").doc(id).get()
           .then(function(doc) {
             if (doc.exists) {
-              console.log(doc.data());
-              return doc.data();
+              callback(doc.data());
             } else {
               console.log("No such document!");
-              return null;
+               callback(null);
             }
           }).catch(function(error) {
             console.log("Error getting document:", error);
