@@ -12,6 +12,8 @@ const twitter = require('./routes/twitter');
 
 const admin = require("firebase-admin");
 
+require('dotenv').config();
+
 admin.initializeApp({
   credential: admin.credential.cert({
     "private_key": process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n'),
@@ -47,7 +49,7 @@ app.use('/twitter', twitter);
 app.use(function(req, res, next) {
   const err = new Error('Not Found');
   err.status = 404;
-  next(err);
+  //next(err);
 });
 
 // error handler
