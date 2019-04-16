@@ -3,13 +3,13 @@ import * as admin from "firebase-admin";
 const database = admin.firestore();
 
 
-class UserDA {
+export class UserDA {
 
     constructor() {
     }
 
     getUser() {
-        return database.collection("user").document();
+        return database.collection("user").doc();
     }
 
 
