@@ -64,13 +64,14 @@ router.get('/connecte', function(req, res) {
 });
 
 function checkIfIndB(UsrId, DisplayName) {
-  let usr = db.getUser(UsrId);
-  if(usr === null) {
-    db.addUser(UsrId, DisplayName);
-  }
-  else {
-    console.log(usr);
-  }
+  var usr = db.getUser(UsrId);
+    if(usr === null) {
+      console.log("COUCOU");
+      db.addUser(UsrId, DisplayName);
+    }
+    else {
+      console.log(usr);
+    }
 }
 
 module.exports = router;

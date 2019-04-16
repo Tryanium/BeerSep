@@ -20,7 +20,8 @@ class UserDA {
         database.collection("users").doc(id).get()
           .then(function(doc) {
             if (doc.exists) {
-              return doc;
+              console.log(doc.data());
+              return doc.data();
             } else {
               console.log("No such document!");
               return null;
