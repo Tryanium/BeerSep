@@ -1,4 +1,6 @@
-class BeerDA {
+class BeerDA extends DataAccess {
+
+
     /*
       addBeer() {
       var docRef = env.collection('beer').doc('HK');
