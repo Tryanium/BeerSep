@@ -80,7 +80,7 @@ local.properties
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
-
+.idea
 # Generated files
 .idea/**/contentModel.xml
 
@@ -378,7 +378,11 @@ GitHub.sublime-settings
 # User-specific stuff
 
 # Generated files
-./idea/**/vcs.xml
+.idea/vcs.xml
+.idea/modules.xml
+.idea/misc.xml
+.idea/BeerSep.iml
+
 
 # Sensitive or high-churn files
 
