@@ -5,7 +5,15 @@ var passport = require('passport');
 require('dotenv').config();
 var TwitterStrategy = require('passport-twitter').Strategy;
 
-router.use(require('express-session')({ secret: 'keyboard cat',resave: false, saveUninitialized: true}));
+const Da = require("./../data-access/UserDA.ts");
+
+var db = new Da();
+
+router.use(require('express-session')({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true
+}));
 
 router.use(passport.initialize());
 router.use(passport.session());
@@ -18,13 +26,13 @@ passport.use(new TwitterStrategy({
   },
 
   function(token, tokenSecret, profile, cb) {
-      // In this example, the user's Twitter profile is supplied as the user
-      // record.  In a production-quality application, the Twitter profile should
-      // be associated with a user record in the application's database, which
-      // allows for account linking and authentication with other identity
-      // providers.
-      return cb(null, profile);
-    }
+    // In this example, the user's Twitter profile is supplied as the user
+    // record.  In a production-quality application, the Twitter profile should
+    // be associated with a user record in the application's database, which
+    // allows for account linking and authentication with other identity
+    // providers.
+    return cb(null, profile);
+  }
 ));
 
 passport.serializeUser(function(user, cb) {
@@ -35,20 +43,28 @@ passport.deserializeUser(function(obj, cb) {
   cb(null, obj);
 });
 
-router.get('/oauth/callback', function (req, res) {
-  passport.authenticate('twitter', { successRedirect: '/twitter/connecte',
-                                     failureRedirect: '/'
-                                   }) (req,res);
+router.get('/oauth/callback', function(req, res, next) {
+  passport.authenticate('twitter', {
+    successRedirect: '/twitter/connecte',
+    failureRedirect: '/'
+  })(req, res, next);
 });
 
 
-router.get('/connecte', function (req,res) {
-  if(req.user) {
+router.get('/connecte', function(req, res) {
+  //console.log(req.user);
+  if (req.user) {
+    let id = req.user.id;
     let img = req.user.photos[0].value;
+    checkIfIndB(id);
     res.send("Hello " + req.user.displayName + "<img src='" + img + "' >");
   } else {
     res.redirect('/');
   }
 });
+
+function checkIfIndB(UsrId) {
+  console.log(db.getUser(UsrId));
+}
 
 module.exports = router;

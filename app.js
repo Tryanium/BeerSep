@@ -5,24 +5,13 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
+require('dotenv').config();
+
 const index = require('./routes/index');
 const users = require('./routes/users');
 const beers = require('./routes/beers');
 const twitter = require('./routes/twitter');
 
-const admin = require("firebase-admin");
-
-require('dotenv').config();
-
-admin.initializeApp({
-  credential: admin.credential.cert({
-    "private_key": process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n'),
-    "client_email": process.env.FIREBASE_CLIENT_EMAIL,
-    "project_id": process.env.FIREBASE_PROJECT_ID,
-    "private_key_id": process.env.FIREBASE_PRIVATE_KEY_ID
-  }),
-  databaseURL: "https://MY_APP.firebaseio.com"
-});
 
 const app = express();
 
