@@ -26,4 +26,4 @@ var BeerDA = /** @class */ (function (_super) {
         configurable: true
     });
     return BeerDA;
-}(DataAccess));
+});
