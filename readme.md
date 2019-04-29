@@ -14,4 +14,4 @@ Il s'agit avant tout d'un projet scolaire utilisant Node JS / Travis CLI / Herok
   `data = {
     userName: "username de Twitter",
     userImg: "L'image de profil de twitter"
-    }e
+    }`
