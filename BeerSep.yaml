@@ -1,0 +1,41 @@
+swagger: "2.0"
+info:
+  description: "Il s'agit de la documentation de l'API BeerSep"
+  version: "1.0.0"
+  title: "BeerSep"
+host: "https:\/\/beersep.herokuapp.com\/"
+tags:
+- name: "Authentification"
+  description: "Authentification par Twitter"
+- name: "Bière"
+  description: "Manipulation des bières"
+
+paths:
+  /twitter/oauth/callback:
+    post:
+      tags:
+      - "Authentification"
+      summary: "Se connecter à l'aide de twitter"
+      description: ""
+      operationID: "auth"
+      produces:
+      - "application/json"
+      responses:
+        schema:
+          $ref: "#/definitions/Twitter"
+      security:
+        - "read"
+definitions:
+  Twitter:
+    type: "object"
+    properties:
+      userName:
+        type: "string"
+        example: "Tryanium"
+      userID:
+        type: "string"
+        example: "1112685356594462720"
+      userImg:
+        type: "url"
+        example: "https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png"
+    

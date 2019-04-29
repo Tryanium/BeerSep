@@ -58,8 +58,10 @@ router.get('/connecte', function(req, res) {
     let img = req.user.photos[0].value;
     checkIfIndB(req.user);
     let data = {};
-    data.userName = eq.user.displayName;
+    data.userName = req.user.displayName;
+    data.userID = id;
     data.userImg = img;
+    console.log(data);
     res.send(data);
   } else {
     res.redirect('/');
