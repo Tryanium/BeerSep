@@ -7,10 +7,11 @@ Il s'agit avant tout d'un projet scolaire utilisant Node JS / Travis CLI / Herok
 ## Endpoints
 
 1. Pour la connexion à Twitter
-  `https://beersep.herokuapp.com/twitter/oauth/callback`
+
+  endpoint : `https://beersep.herokuapp.com/twitter/oauth/callback`
 
   Expected output :
-  'data = {
+  `data = {
     userName: "username de Twitter",
     userImg: "L'image de profil de twitter"
-    }'
+    }e
