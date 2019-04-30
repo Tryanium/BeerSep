@@ -4,7 +4,7 @@ const router = express.Router();
 
 /* GET home page. */
 router.post('/addBeer', function(req, res) {
-  res.send('YOUPI');
+  res.send({YOUPI: "youpi"});
 });
 
 router.delete('/deleteBeer', function(req, res, next) {
