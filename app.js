@@ -34,6 +34,15 @@ app.use('/users', users);
 app.use('/beers', beers);
 app.use('/twitter', twitter);
 
+app.get('/testGET', function (req, res, next) {
+  res.send('COUCOU');
+});
+
+app.post('/testPOST', function (req, res, next) {
+  let body = req.body;
+  res.send(body);
+});
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   const err = new Error('Not Found');
