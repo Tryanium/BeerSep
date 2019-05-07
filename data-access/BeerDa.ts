@@ -1,15 +1,49 @@
+var admin = require("firebase-admin");
+
 class BeerDA {
+
+  constructor() {
     /*
-      addBeer() {
-      var docRef = env.collection('beer').doc('HK');
-      var setAda = docRef.set({
-        name: 'Heineken',
-        pourcentage: "5"
-      });
-      }
+    require('dotenv').config();
+    admin.initializeApp({
+      credential: admin.credential.cert({
+        "private_key": process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+        "client_email": process.env.FIREBASE_CLIENT_EMAIL,
+        "project_id": process.env.FIREBASE_PROJECT_ID,
+        "private_key_id": process.env.FIREBASE_PRIVATE_KEY_ID
+      }),
+      databaseURL: "https://beersep-cf1ad.firebaseio.com"
+    });
+    */
+  }
 
-      deleteBeer() {
+  addBeer(beer, callback) {
+    const database = admin.firestore();
+    let data = {
+      name: beer.name,
+      color: beer.color,
+      type : beer.type,
+      alcohol: beer.alcohol,
+      origin: beer.origin
+    };
+    database.collection("beer").doc(beer.name).set(data);
+    callback(data);
+  }
 
-      }
-    }*/
+  getBeer(beer, callback) {
+      const database = admin.firestore();
+      database.collection("beer").doc(beer.name).get()
+        .then(function(doc) {
+          if (doc.exists) {
+            callback(doc.data());
+          } else {
+            console.log("No such document!");
+             callback(null);
+          }
+        }).catch(function(error) {
+          console.log("Error getting document:", error);
+        });
+  }
+
 }
+module.exports = BeerDA;

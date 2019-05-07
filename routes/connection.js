@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var passport = require('passport');
 
 const Da = require("./../data-access/UserDA.ts");
 
@@ -12,7 +11,6 @@ router.get('/', function(req, res) {
     let id = user.userID;
     let img = user.userImg;
     let data = checkIfIndB(user, function (data) {
-      console.log(data);
       res.send(data);
     });
   } else {
@@ -28,7 +26,7 @@ function checkIfIndB(TwitterProfil, callback) {
        });
      }
      else {
-       callback(data);
+       callback("This beer is already in the db");
      }
    });
 }

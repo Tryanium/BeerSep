@@ -3,6 +3,7 @@ var admin = require("firebase-admin");
 class UserDA {
 
     constructor() {
+      /*
       require('dotenv').config();
       admin.initializeApp({
         credential: admin.credential.cert({
@@ -13,6 +14,7 @@ class UserDA {
         }),
         databaseURL: "https://beersep-cf1ad.firebaseio.com"
       });
+      */
     }
 
     getUser(TwitterProfil, callback) {
@@ -37,7 +39,6 @@ class UserDA {
      * @param user
      * @returns {any}
      */
-    // TODO type le user
     addUser(TwitterProfil, callback){
         const database = admin.firestore();
         let data = {
