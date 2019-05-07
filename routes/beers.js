@@ -46,7 +46,7 @@ function checkIfIndB(beer, callback) {
 function checkIfIndBGet(beer, callback) {
   var beer = db.getBeer(beer, function (data) {
     if(data === null) {
-      callback(data)
+      callback("The beer does not exist")
     }
     else {
       callback(data);
