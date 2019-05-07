@@ -5,7 +5,7 @@ var passport = require('passport');
 require('dotenv').config();
 var TwitterStrategy = require('passport-twitter').Strategy;
 
-const Da = require("./../data-access/UserDA.ts");
+const Da = require("../data-access/UserDA.ts");
 
 var db = new Da();
 

@@ -1,4 +1,4 @@
-class BeerDA extends DataAccess {
+class BeerDa extends DataAccess {
     private _collection;
 
     constructor() {
@@ -6,7 +6,13 @@ class BeerDA extends DataAccess {
         this.collection = this.database.collection("beers");
     }
 
-
+    getBeers(id?) {
+        if(id) {
+            return this.collection.doc(id).get();
+        } else {
+            return this.collection.get();
+        }
+    }
 
 
     get collection() {
@@ -17,3 +23,5 @@ class BeerDA extends DataAccess {
         this._collection = value;
     }
 }
+
+module.exports = BeerDa;

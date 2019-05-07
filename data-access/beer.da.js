@@ -8,14 +8,22 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var BeerDA = /** @class */ (function (_super) {
-    __extends(BeerDA, _super);
-    function BeerDA() {
+var BeerDa = /** @class */ (function (_super) {
+    __extends(BeerDa, _super);
+    function BeerDa() {
         var _this = _super.call(this) || this;
         _this.collection = _this.database.collection("beers");
         return _this;
     }
-    Object.defineProperty(BeerDA.prototype, "collection", {
+    BeerDa.prototype.getBeers = function (id) {
+        if (id) {
+            return this.collection.doc(id).get();
+        }
+        else {
+            return this.collection.get();
+        }
+    };
+    Object.defineProperty(BeerDa.prototype, "collection", {
         get: function () {
             return this._collection;
         },
@@ -25,5 +33,6 @@ var BeerDA = /** @class */ (function (_super) {
         enumerable: true,
         configurable: true
     });
-    return BeerDA;
+    return BeerDa;
 }(DataAccess));
+module.exports = BeerDa;
