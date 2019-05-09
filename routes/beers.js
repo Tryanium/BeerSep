@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-const Da = require("./../data-access/BeerDA.ts");
+const Da = require("./../data-access/BeerDA.js");
 
 var db = new Da();
 
