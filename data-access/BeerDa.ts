@@ -35,6 +35,6 @@ class BeerDA {
         console.log('Error getting documents', err);
       });
   }
-  
+
 }
 module.exports = BeerDA;
