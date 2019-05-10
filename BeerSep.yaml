@@ -1,0 +1,67 @@
+swagger: "2.0"
+info:
+  description: "Il s'agit de la documentation de l'API BeerSep"
+  version: "1.0.0"
+  title: "BeerSep"
+host: "https:\/\/beersep.herokuapp.com\/"
+tags:
+- name: "Authentification"
+  description: "Connexion"
+- name: "Bière"
+  description: "Manipulation des bières"
+
+paths:
+  /connection:
+    post:
+      tags:
+      - "Authentification"
+      summary: "Se connecter à son compte"
+      consumes:
+        - "application/x-www-form-urlencoded"
+      parameters:
+        - in: body
+          name: Body
+          description: "Body après la connexion à Twitter"
+          required: true
+          application/x-www-form-urlencoded:
+          schema:
+            $ref: '#/definitions/authentification'
+      description: ""
+      operationID: "auth"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          schema:
+            $ref: "#/definitions/connexion"
+      security:
+        - "read"
+definitions:
+  connexion:
+    type: "object"
+    properties:
+      Display name:
+        type: "string"
+        example: "Tryanium"
+      ID:
+        type: "string"
+        example: "1112685356594462720"
+      picture:
+        type: "url"
+        example: "https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png"
+      beers:
+        type: "array"
+        example: ["HK", "BK"]
+  authentification:
+    type: "object"
+    properties:
+      userName:
+        type: "string"
+        example: "Tryanium"
+      userID:
+        type: "string"
+        example: "1112685356594462720"
+      userImg:
+        type: "url"
+        example: "https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png"
+    

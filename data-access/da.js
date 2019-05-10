@@ -1,6 +1,8 @@
-var DataAccess = /** @class */ (function () {
-    function DataAccess() {
-        var admin = require("firebase-admin");
+class abstract DataAccess {
+    private _database;
+
+    protected constructor () {
+        const admin = require("firebase-admin");
         require('dotenv').config();
         admin.initializeApp({
             credential: admin.credential.cert({
@@ -13,16 +15,15 @@ var DataAccess = /** @class */ (function () {
         });
         this.database = admin.firestore();
     }
-    Object.defineProperty(DataAccess.prototype, "database", {
-        get: function () {
-            return this._database;
-        },
-        set: function (value) {
-            this._database = value;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    return DataAccess;
-}());
-module.exports = DataAccess;
+
+
+    get database() {
+        return this._database;
+    }
+
+    set database(value) {
+        this._database = value;
+    }
+}
+
+module .exports = DataAccess;
