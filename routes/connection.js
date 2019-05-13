@@ -26,7 +26,7 @@ function checkIfIndB(TwitterProfil, callback) {
        });
      }
      else {
-       callback("This beer is already in the db");
+       callback("This usr is already in the db");
      }
    });
 }
