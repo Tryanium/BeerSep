@@ -20,23 +20,41 @@ class BeerDA {
 
   getBeer(beer, callback) {
     const database = admin.firestore();
-    database.collection("beer").where('name', '>=', beer).get()
-      .then(snapshot => {
-        if (snapshot.empty) {
-          callback(null);
-        }
-        let answer = [];
-        snapshot.forEach(doc => {
-          if(doc.data().name.includes(beer)) {
-            answer.push(doc.data());
+    if(beer == "true") {
+      console.log("it's working");
+      database.collection("beer").get()
+        .then(snapshot => {
+          if (snapshot.empty) {
+            return callback(null);
           }
+          let answer = [];
+          snapshot.forEach(doc => {
+              answer.push(doc.data());
+          });
+          return callback(answer);
+        })
+        .catch(err => {
+          console.log('Error getting documents', err);
         });
-        callback(answer);
-      })
-      .catch(err => {
-        console.log('Error getting documents', err);
-      });
+    }
+    else {
+      database.collection("beer").where('name', '>=', beer).get()
+        .then(snapshot => {
+          if (snapshot.empty) {
+            return callback(null);
+          }
+          let answer = [];
+          snapshot.forEach(doc => {
+            if(doc.data().name.includes(beer)) {
+              answer.push(doc.data());
+            }
+          });
+          return callback(answer);
+        })
+        .catch(err => {
+          console.log('Error getting documents', err);
+        });
+    }
   }
-
 }
 module.exports = BeerDA;

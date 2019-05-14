@@ -39,11 +39,11 @@ function checkIfIndB(beer, callback) {
    var test = db.getBeer(beer, function (data) {
      if(data === null) {
        db.addBeer(beer, function (data) {
-         callback(data)
+         return callback(data)
        });
      }
      else {
-       callback("This beer is already in the db");
+       return callback("This beer is already in the db");
      }
    });
 }
@@ -51,10 +51,10 @@ function checkIfIndB(beer, callback) {
 function checkIfIndBGet(beer, callback) {
   var beer = db.getBeer(beer, function (data) {
     if(data === null) {
-      callback("The beer does not exist")
+      return callback("The beer does not exist")
     }
     else {
-      callback(data);
+      return callback(data);
     }
   });
 }
