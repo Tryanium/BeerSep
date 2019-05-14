@@ -3,7 +3,7 @@ info:
   description: "Il s'agit de la documentation de l'API BeerSep"
   version: "1.0.0"
   title: "BeerSep"
-host: "https:\/\/beersep.herokuapp.com\/"
+host: "beersep.herokuapp.com\/"
 tags:
 - name: "Authentification"
   description: "Connexion"
@@ -36,6 +36,53 @@ paths:
             $ref: "#/definitions/connexion"
       security:
         - "read"
+  /beers/add:
+    post:
+      tags:
+      - "Bière"
+      summary: "Ajouter une bière à la db"
+      consumes:
+        - "application/x-www-form-urlencoded"
+      parameters:
+        - in: body
+          name: Body
+          description: "Body pour l'ajout d'une bière"
+          required: true
+          application/x-www-form-urlencoded:
+          schema:
+            $ref: '#/definitions/AddbeersBody'
+      description: ""
+      produces:
+      - "application/json"
+      responses:
+        200:
+          schema:
+            $ref: "#/definitions/AddbeersBody"
+      security:
+        - "read"
+  /beers/get:
+    get:
+      tags:
+      - "Bière"
+      summary: "Chercher une bière dans la db"
+      consumes:
+        - "application/x-www-form-urlencoded"
+      parameters:
+        - in: query
+          name: name
+          schema:
+            type: integer
+          description: "query pour la recherche d'une bière"
+          required: true
+          application/x-www-form-urlencoded:
+      produces:
+      - "application/json"
+      responses:
+        200:
+          schema:
+            $ref: "#/definitions/GetbeersAnswer"
+      security:
+        - "read"
 definitions:
   connexion:
     type: "object"
@@ -64,4 +111,55 @@ definitions:
       userImg:
         type: "url"
         example: "https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png"
+  AddbeersBody:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+        example: "Heineken"
+      color:
+        type: "string"
+        example: "Blonde"
+      alcohol:
+        type: "int"
+        example: "3"
+      type:
+        type: "string"
+        exemple: "lager"
+      origin:
+        type: "string"
+        exemple: "France"
+  GetBeersBody:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+        example: "H"
+  GetbeersAnswer:
+    type: "array"
+    items: 
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        color:
+          type: "string"
+        alcohol:
+         type: "int"
+        type:
+          type: "string"
+        origin:
+          type: "string"
+    example:
+      - name: "Heineken"
+        color: "Blonde"
+        alcohol: "3"
+        type: "lager"
+        origin: "France"
+      - name: "Hoegaarden"
+        color: "Blonde"
+        alcohol: "5"
+        type: "lager"
+        origin: "Belge"
+
     
