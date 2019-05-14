@@ -5,7 +5,7 @@ const Da = require("./../data-access/UserDA.js");
 
 var db = new Da();
 
-router.get('/', function(req, res) {
+router.post('/', function(req, res) {
   let user = req.body;
   if (user) {
     let id = user.userID;

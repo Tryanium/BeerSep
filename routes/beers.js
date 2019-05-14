@@ -8,14 +8,16 @@ var db = new Da();
 router.post('/add', function(req, res) {
   let beer = req.body;
   if (beer) {
-    let name = beer.name;
-    let color = beer.color;
-    let alcohol = beer.alcohol;
-    let type = beer.type;
-    let origin = beer.origin;
-    let data = checkIfIndB(beer, function (data) {
-      res.send(data);
-    });
+    if(beer.hasOwnProperty('name') && beer.hasOwnProperty('color') && beer.hasOwnProperty('alcohol') && beer.hasOwnProperty('type') && beer.hasOwnProperty('origin')) {
+      let name = beer.name;
+      let color = beer.color;
+      let alcohol = beer.alcohol;
+      let type = beer.type;
+      let origin = beer.origin;
+      let data = checkIfIndB(beer, function (data) {
+        res.send(data);
+      });
+    }
   } else {
     res.send("Pas le bon format d'envoie des données --> Body vide");
   }
