@@ -22,11 +22,14 @@ router.post('/add', function(req, res) {
 });
 
 router.get('/get', function (req, res) {
-  let beer = req.body;
+  let beer = req.query.name;
   if (beer) {
     checkIfIndBGet(beer, function (data) {
       res.send(data);
     });
+  }
+  else {
+    res.send("you need to add the name parameter");
   }
 });
 

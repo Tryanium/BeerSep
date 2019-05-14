@@ -20,7 +20,7 @@ class BeerDA {
 
   getBeer(beer, callback) {
     const database = admin.firestore();
-    database.collection("beer").where('name', '>=', beer.name).get()
+    database.collection("beer").where('name', '>=', beer).get()
       .then(snapshot => {
         if (snapshot.empty) {
           callback(null);
