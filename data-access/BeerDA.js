@@ -27,7 +27,9 @@ class BeerDA {
         }
         let answer = [];
         snapshot.forEach(doc => {
-          answer.push(doc.data());
+          if(doc.data().name.includes(beer)) {
+            answer.push(doc.data());
+          }
         });
         callback(answer);
       })
