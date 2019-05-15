@@ -1,2 +1,1 @@
-require("beer");
-require("beer-search");
+require("./BeerSearch");

@@ -2,8 +2,9 @@ var express = require('express');
 var router = express.Router();
 
 const Da = require("../data-access/BeerDa.js");
-
 var db = new Da();
+
+const models = require("../models");
 
 router.post('/add', function(req, res) {
   let beer = req.body;
@@ -29,6 +30,25 @@ router.get('/get', function (req, res) {
     });
   }
 });
+
+router.get('/get2', function (req, res) {
+  if (req.body) {
+    let beerSearch = new BeerSearch(req.body);
+    test2(beerSearch, function (data) {
+      res.send(data);
+    });
+  }
+});
+function test2 (beer, callback) {
+  var beer = db.getBeer2(beer, function (data) {
+    if(data === null) {
+      callback("The beer does not exist")
+    }
+    else {
+      callback(data);
+    }
+  });
+}
 
 function checkIfIndB(beer, callback) {
    var test = db.getBeer(beer, function (data) {
