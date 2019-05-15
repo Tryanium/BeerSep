@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
-const Da = require("../data-access/UserDA.js");
+const Da = require("./../data-access/UserDA.js");
 
 var db = new Da();
 
-router.get('/', function(req, res) {
+router.post('/', function(req, res) {
   let user = req.body;
   if (user) {
     let id = user.userID;
@@ -26,7 +26,7 @@ function checkIfIndB(TwitterProfil, callback) {
        });
      }
      else {
-       callback("This beer is already in the db");
+       callback(data);
      }
    });
 }
