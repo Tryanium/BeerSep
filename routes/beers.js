@@ -27,6 +27,9 @@ router.get('/get', function (req, res) {
   let beer = req.query.name;
   if (beer) {
     checkIfIndBGet(beer, function (data) {
+      if (data == null) {
+        console.log("empty");
+      }
       res.send(data);
     });
   }
@@ -50,12 +53,7 @@ function checkIfIndB(beer, callback) {
 
 function checkIfIndBGet(beer, callback) {
   var beer = db.getBeer(beer, function (data) {
-    if(data === null) {
-      return callback("The beer does not exist")
-    }
-    else {
       return callback(data);
-    }
   });
 }
 

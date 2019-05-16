@@ -21,11 +21,10 @@ class BeerDA {
   getBeer(beer, callback) {
     const database = admin.firestore();
     if(beer == "true") {
-      console.log("it's working");
       database.collection("beer").get()
         .then(snapshot => {
           if (snapshot.empty) {
-            return callback(null);
+            return callback({});
           }
           let answer = [];
           snapshot.forEach(doc => {
@@ -41,7 +40,7 @@ class BeerDA {
       database.collection("beer").where('name', '>=', beer).get()
         .then(snapshot => {
           if (snapshot.empty) {
-            return callback(null);
+            return callback({});
           }
           let answer = [];
           snapshot.forEach(doc => {
