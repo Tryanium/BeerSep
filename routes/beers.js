@@ -7,8 +7,8 @@ var db = new Da();
 
 router.post('/add', function(req, res) {
   console.log("I add a beer");
-  let beer = req.body;
-  console.log(beer.body);
+  let beer = req.body.body;
+  console.log(JSON.stringify(beer));
   if (beer) {
     if(beer.hasOwnProperty('name') && beer.hasOwnProperty('color') && beer.hasOwnProperty('alcohol') && beer.hasOwnProperty('type') && beer.hasOwnProperty('origin')) {
       let name = beer.name;
