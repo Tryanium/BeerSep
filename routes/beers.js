@@ -6,6 +6,7 @@ const Da = require("./../data-access/BeerDA.js");
 var db = new Da();
 
 router.post('/add', function(req, res) {
+  console.log("I add a beer");
   let beer = req.body;
   if (beer) {
     if(beer.hasOwnProperty('name') && beer.hasOwnProperty('color') && beer.hasOwnProperty('alcohol') && beer.hasOwnProperty('type') && beer.hasOwnProperty('origin')) {

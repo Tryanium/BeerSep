@@ -24,7 +24,7 @@ class BeerDA {
       database.collection("beer").get()
         .then(snapshot => {
           if (snapshot.empty) {
-            return callback({});
+            return callback([]);
           }
           let answer = [];
           snapshot.forEach(doc => {
