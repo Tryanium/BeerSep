@@ -7,7 +7,6 @@ const bodyParser = require('body-parser');
 var cors = require('cors');
 
 require('dotenv').config();
-app.use(cors());
 const users = require('./routes/users');
 const beers = require('./routes/beers');
 const connection = require('./routes/connection');
@@ -33,6 +32,7 @@ admin.initializeApp({
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(cors());
 app.use(logger('dev'));
 app.use(bodyParser.json({
   limit: '50mb'
