@@ -1,24 +1,21 @@
 var express = require('express');
 var router = express.Router();
+var util = require('util');
 
 const Da = require("./../data-access/BeerDA.js");
 
 var db = new Da();
 
 router.post('/add', function(req, res) {
-  console.log("I add a beer");
-  let beer = JSON.parse(req.body);
+  let beer = JSON.parse(req.body.message);
   console.log(beer);
   if (beer) {
     if(beer.hasOwnProperty('name') && beer.hasOwnProperty('color') && beer.hasOwnProperty('alcohol') && beer.hasOwnProperty('type') && beer.hasOwnProperty('origin')) {
-      let name = beer.name;
-      let color = beer.color;
-      let alcohol = beer.alcohol;
-      let type = beer.type;
-      let origin = beer.origin;
-      let data = checkIfIndB(beer, function (data) {
+      let check = checkIfIndB(beer, function (data) {
         res.send(data);
       });
+    } else {
+      res.status(300).send('FORMAT WRONG');
     }
   } else {
     res.send("Pas le bon format d'envoie des données --> Body vide");
@@ -41,8 +38,10 @@ router.get('/get', function (req, res) {
 });
 
 function checkIfIndB(beer, callback) {
-   var test = db.getBeer(beer, function (data) {
-     if(data === null) {
+   var test = db.getBeer(beer.name, function (data) {
+     console.log("DATA : ", data);
+     console.log(data.length);
+     if(data.length <= 0) {
        db.addBeer(beer, function (data) {
          return callback(data)
        });
