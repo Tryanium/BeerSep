@@ -4,9 +4,10 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+var cors = require('cors');
 
 require('dotenv').config();
-
+app.use(cors());
 const users = require('./routes/users');
 const beers = require('./routes/beers');
 const connection = require('./routes/connection');
