@@ -9,6 +9,8 @@ tags:
   description: "Connexion"
 - name: "Bière"
   description: "Manipulation des bières"
+- name: "User"
+  description: "Manipulation des données utilisateurs"
 
 paths:
   /connection:
@@ -83,6 +85,28 @@ paths:
             $ref: "#/definitions/GetbeersAnswer"
       security:
         - "read"
+  /users/beer:
+    put: 
+      tags: 
+      - "User"
+      summary: "ajout d'une bière à l'utilisateur"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      parameters:
+        - in: body
+          name: Body
+          description: "Envoie des infos nécessaires"
+          required: true
+          application/x-www-form-urlencoded:
+          schema:
+            $ref: '#/definitions/AddBeerToUsr'
+      produces:
+      - "String"
+      responses:
+        200:
+          schema: 
+            type: "string"
+            example: "success"
 definitions:
   connexion:
     type: "object"
@@ -161,5 +185,20 @@ definitions:
         alcohol: "5"
         type: "lager"
         origin: "Belge"
+  AddBeerToUsr:
+    type: "object"
+    properties:
+      UserID:
+        type: "string"
+        example: "1112685356594462720"
+      CompletedBeer:
+        type: "object"
+        properties:
+          beer: 
+            type: "string"
+            example: "Heineken"
+          note:
+            type: "integer"
+            example: 3
 
     
