@@ -14,8 +14,6 @@ const connection = require('./routes/connection');
 
 const app = express();
 
-const PORT = process.env.PORT || 5000;
-
 require('dotenv').config();
 var admin = require("firebase-admin");
 admin.initializeApp({
@@ -64,4 +62,6 @@ app.use(function(err, req, res) {
 
 module.exports = app;
 
-app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
+app.listen(process.env.PORT || 5000, function () {
+  console.log("SERVER START ON 127.0.0.1:5000");
+});

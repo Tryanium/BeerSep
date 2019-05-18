@@ -8,14 +8,13 @@ var db = new Da();
 
 router.post('/add', function(req, res) {
   let beer = JSON.parse(req.body.message);
-  console.log(beer);
   if (beer) {
     if(beer.hasOwnProperty('name') && beer.hasOwnProperty('color') && beer.hasOwnProperty('alcohol') && beer.hasOwnProperty('type') && beer.hasOwnProperty('origin')) {
       let check = checkIfIndB(beer, function (data) {
         res.send(data);
       });
     } else {
-      res.status(300).send('FORMAT WRONG');
+      res.status(300).send('WRONG WRONG');
     }
   } else {
     res.send("Pas le bon format d'envoie des données --> Body vide");

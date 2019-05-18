@@ -38,6 +38,21 @@ class UserDA {
         database.collection("users").doc(TwitterProfil.userID).set(data);
         callback(data);
     }
+
+  /**
+  @param {JSON} userID
+  @param {JSON} CompletedBeer
+  JSON with beer and the note
+  */
+
+    addBeerToUser(userID, CompletedBeer, callback) {
+      const database = admin.firestore();
+      var Doc = database.collection('users').doc(userID);
+      var arrUnion = Doc.update({
+        beers: admin.firestore.FieldValue.arrayUnion(CompletedBeer)
+      });
+      callback("success");
+    }
 }
 
 module.exports = UserDA;
