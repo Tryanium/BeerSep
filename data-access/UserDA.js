@@ -51,7 +51,15 @@ class UserDA {
       var arrUnion = Doc.update({
         beers: admin.firestore.FieldValue.arrayUnion(CompletedBeer)
       });
-      callback("success");
+      return callback("success");
+    }
+
+    updateBeerToUser(userID, CompletedBeer, callback) {
+      const database = admin.firestore();
+      var updateNested = database.collection('users').doc(userID).update({
+        beers: admin.firestore.FieldValue.delete(CompletedBeer.beer)
+      });
+      return callback('done');
     }
 }
 
