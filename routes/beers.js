@@ -11,13 +11,13 @@ router.post('/add', function(req, res) {
   if (beer) {
     if(beer.hasOwnProperty('name') && beer.hasOwnProperty('color') && beer.hasOwnProperty('alcohol') && beer.hasOwnProperty('type') && beer.hasOwnProperty('origin')) {
       let check = checkIfIndB(beer, function (data) {
-        res.send(data);
+        res.status(200).send(data);
       });
     } else {
-      res.status(300).send('WRONG WRONG');
+      res.status(422).send('WRONG WRONG');
     }
   } else {
-    res.send("Pas le bon format d'envoie des données --> Body vide");
+    res.status(422).send("Pas le bon format d'envoie des données --> Body vide");
   }
 });
 
@@ -28,11 +28,11 @@ router.get('/get', function (req, res) {
       if (data == null) {
         console.log("empty");
       }
-      res.send(data);
+      res.status(200).send(data);
     });
   }
   else {
-    res.send("you need to add the name parameter");
+    res.status(422).end("you need to add the name parameter");
   }
 });
 

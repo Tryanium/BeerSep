@@ -11,10 +11,10 @@ router.post('/', function(req, res) {
     let id = user.userID;
     let img = user.userImg;
     let data = checkIfIndB(user, function (data) {
-      res.send(data);
+      res.status(200).send(data);
     });
   } else {
-    res.send("Pas le bon format d'envoie des données --> Body vide");
+    res.status(422).send("Pas le bon format d'envoie des données --> Body vide");
   }
 });
 
