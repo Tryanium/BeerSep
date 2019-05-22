@@ -12,7 +12,6 @@ class UserDA {
             if (doc.exists) {
               callback(doc.data());
             } else {
-              console.log("No such document!");
                callback(null);
             }
           }).catch(function(error) {
@@ -56,10 +55,23 @@ class UserDA {
 
     updateBeerToUser(userID, CompletedBeer, callback) {
       const database = admin.firestore();
-      var updateNested = database.collection('users').doc(userID).update({
-        beers: admin.firestore.FieldValue.delete(CompletedBeer.beer)
+      database.collection("users").doc(userID).get()
+      .then(function (doc) {
+        if (doc.exists) {
+          let doc = doc.data();
+          let ArrayBeers = doc.beers;
+          ArrayBeers.forEach(function (beer) {
+            if(beer.beer == CompletedBeer.beer) {
+              beer.note = CompletedBeer.note;
+              doc.beers = ArrayBeers;
+              console.log(doc.data());
+              return callback('done');
+            }
+          });
+        } else {
+          return callback('Not doc found for this user');
+        }
       });
-      return callback('done');
     }
 }
 
